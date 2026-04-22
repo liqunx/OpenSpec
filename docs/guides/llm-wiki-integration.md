@@ -369,16 +369,45 @@ Good cross-references make the wiki navigable:
 
 **Example**: See `examples/wiki-integration/claude-settings.json`
 
+### Lingma IDE ⚠️ Manual Workflow
+
+**Hook Support**: Not supported
+
+Lingma IDE does not support Claude Code's hooks mechanism. The `settings.json` hooks configuration will not work.
+
+**Alternative Approach**:
+
+1. **Manual Skill Invocation** (Recommended)
+   ```bash
+   # Before starting work
+   /openspec-wiki-query {topic}
+   
+   # After archiving
+   /openspec-wiki-ingest
+   ```
+
+2. **Use Lingma IDE Rules Feature**
+   - Configure reminder rules in Personal Settings > Rules
+   - Set up model-decision rules to remind you when to query/ingest
+   - See [LINGMA-IDE-CONFIG.md](../../LINGMA-IDE-CONFIG.md) for detailed setup
+
+3. **Team Conventions**
+   - Document the workflow in team guidelines
+   - Include wiki steps in code review checklist
+   - Train team members on the manual process
+
+For complete Lingma IDE configuration guide, see [LINGMA-IDE-CONFIG.md](../../LINGMA-IDE-CONFIG.md).
+
 ### Other AI Tools
 
 Different tools have different hook mechanisms:
 
-- **Cursor**: May use different configuration format
-- **Windsurf**: Check Windsurf documentation for hooks
+- **Cursor**: May use different configuration format (unverified)
+- **Windsurf**: Check Windsurf documentation for hooks (unverified)
 - **GitHub Copilot**: Limited hook support
 - **Custom Tools**: Implement similar pre/post execution logic
 
-**Recommendation**: Start with Claude Code as reference implementation, adapt for other tools as needed.
+**Recommendation**: Start with Claude Code as reference implementation. For tools without hook support, use manual invocation or tool-specific automation features.
 
 ## Advanced Topics
 
