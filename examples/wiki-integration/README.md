@@ -4,7 +4,7 @@ This directory contains example configurations and skills for integrating OpenSp
 
 ## Contents
 
-### `skills/`
+### `skills/` - For Claude Code
 Example skill files that can be copied to your project's AI tool directory:
 
 - **`openspec-wiki-query/`** - Skill for querying the wiki before starting work
@@ -13,11 +13,21 @@ Example skill files that can be copied to your project's AI tool directory:
 ### `claude-settings.json`
 Example hook configuration for Claude Code that automatically triggers wiki query and ingest operations.
 
+### `lingma-commands/` - For Lingma IDE ⭐
+Command files specifically designed for Lingma IDE:
+
+- **`opsx/wiki-query.md`** - Command: `/opsx:wiki-query`
+- **`opsx/wiki-ingest.md`** - Command: `/opsx:wiki-ingest`
+- **`README.md`** - Lingma IDE specific setup guide
+
+**Note**: Lingma IDE does not support hooks, so these are manual commands instead of automated skills.
+
 ## Quick Setup
+
+### For Claude Code
 
 1. Copy skills to your AI tool directory:
    ```bash
-   # For Claude Code
    cp -r skills/openspec-wiki-query .claude/skills/
    cp -r skills/openspec-wiki-ingest .claude/skills/
    ```
@@ -32,6 +42,27 @@ Example hook configuration for Claude Code that automatically triggers wiki quer
    ```
 
 4. Restart your IDE
+
+### For Lingma IDE
+
+1. Copy commands to your Lingma commands directory:
+   ```bash
+   cp lingma-commands/opsx/wiki-query.md .lingma/commands/opsx/
+   cp lingma-commands/opsx/wiki-ingest.md .lingma/commands/opsx/
+   ```
+
+2. Initialize wiki structure (same as above)
+
+3. Restart Lingma IDE
+
+4. Use manually:
+   ```bash
+   # Before work
+   /opsx:wiki-query {topic}
+   
+   # After archiving
+   /opsx:wiki-ingest
+   ```
 
 For detailed instructions, see [docs/guides/llm-wiki-integration.md](../../docs/guides/llm-wiki-integration.md).
 
